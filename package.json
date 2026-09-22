@@ -1,0 +1,11 @@
+{
+  "name": "polygon-annotator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "基于 Canvas + Pointer Events + Web Worker 的多边形标注工具",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/geometry.test.js test/history.test.js test/model.test.js test/integration.test.js",
+    "start": "python3 -m http.server 8080"
+  }
+}

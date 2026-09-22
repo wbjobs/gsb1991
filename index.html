@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>多边形标注工具</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="brand">多边形标注</div>
+      <div class="group" role="group" aria-label="工具">
+        <button id="toolDraw" type="button" class="tool-btn active" title="绘制多边形 (P)">✏️ 绘制</button>
+        <button id="toolSelect" type="button" class="tool-btn" title="选择/移动 (V)">▣ 选择</button>
+      </div>
+      <div class="group" role="group" aria-label="历史">
+        <button id="btnUndo" type="button" disabled title="撤销 (Ctrl+Z)">↶ 撤销</button>
+        <button id="btnRedo" type="button" disabled title="重做 (Ctrl+Y / Ctrl+Shift+Z)">↷ 重做</button>
+      </div>
+      <div class="group" role="group" aria-label="绘制操作">
+        <button id="btnFinish" type="button" disabled title="闭合多边形 (Enter / 双击 / 点击起点)">✓ 闭合</button>
+        <button id="btnCancel" type="button" disabled title="取消绘制 (Esc)">✕ 取消</button>
+      </div>
+      <div class="group" role="group" aria-label="编辑">
+        <input id="labelInput" type="text" maxlength="64" placeholder="选择多边形后可编辑标签" />
+        <button id="btnDelete" type="button" disabled title="删除选中 (Delete)">🗑 删除</button>
+        <button id="btnClear" type="button">清空全部</button>
+      </div>
+      <div class="spacer"></div>
+      <div class="group" role="group" aria-label="数据">
+        <button id="btnImport" type="button">导入 JSON</button>
+        <button id="btnExport" type="button" class="primary" disabled>导出 JSON</button>
+        <button id="btnStress" type="button" title="生成 500 个随机多边形做性能压测">压测 500</button>
+      </div>
+      <input id="importFile" type="file" accept="application/json,.json" hidden />
+    </header>
+
+    <main id="stage" class="stage">
+      <canvas id="baseLayer" class="layer"></canvas>
+      <canvas id="overlayLayer" class="layer"></canvas>
+      <div class="hint" aria-hidden="true">
+        单击添加顶点 · 点击起点 / 双击 / Enter 闭合 · Ctrl+Z 撤销 · P 绘制 / V 选择
+      </div>
+      <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+    </main>
+
+    <footer class="statusbar">
+      <span id="stats">多边形 0 · 顶点 0 · 面积 0px² · FPS 0</span>
+      <span id="workerStatus" class="worker-status">Worker: 启动中…</span>
+    </footer>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
